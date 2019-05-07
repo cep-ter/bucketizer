@@ -1,1 +1,1 @@
-ping when # version-splitter
+# version-splitter
