@@ -6,13 +6,13 @@ import (
 	"github.com/pkg/errors"
 )
 
-type xxhashBucketizer struct {
+type XXHASHBucketizer struct {
 	Buckets      []bucketizer.Bucket
 	weightSum    uint64
 	bucketRanges []uint64
 }
 
-func (b xxhashBucketizer) BucketString(value string) (int, error) {
+func (b XXHASHBucketizer) BucketString(value string) (int, error) {
 	hashDigest := xxhash.Sum64String(value)
 	reminder := hashDigest % b.weightSum
 	n := len(b.bucketRanges)
@@ -24,7 +24,7 @@ func (b xxhashBucketizer) BucketString(value string) (int, error) {
 	return 0, errors.New("invalid reminder value")
 }
 
-func (b xxhashBucketizer) BucketBytes(value []byte) (int, error) {
+func (b XXHASHBucketizer) BucketBytes(value []byte) (int, error) {
 	hashDigest := xxhash.Sum64(value)
 	reminder := hashDigest % b.weightSum
 	n := len(b.bucketRanges)
@@ -36,47 +36,47 @@ func (b xxhashBucketizer) BucketBytes(value []byte) (int, error) {
 	return 0, errors.New("invalid reminder value")
 }
 
-func (b xxhashBucketizer) BucketInt(value int) (int, error) {
+func (b XXHASHBucketizer) BucketInt(value int) (int, error) {
 
 	return 0, nil
 }
 
-func (b xxhashBucketizer) BucketInt8(value int8) (int, error) {
+func (b XXHASHBucketizer) BucketInt8(value int8) (int, error) {
 
 	return 0, nil
 }
 
-func (b xxhashBucketizer) BucketInt16(value int16) (int, error) {
+func (b XXHASHBucketizer) BucketInt16(value int16) (int, error) {
 
 	return 0, nil
 }
 
-func (b xxhashBucketizer) BucketInt32(value int32) (int, error) {
+func (b XXHASHBucketizer) BucketInt32(value int32) (int, error) {
 
 	return 0, nil
 }
 
-func (b xxhashBucketizer) BucketInt64(value int64) (int, error) {
+func (b XXHASHBucketizer) BucketInt64(value int64) (int, error) {
 
 	return 0, nil
 }
 
-func (b xxhashBucketizer) BucketFloat64(value float64) (int, error) {
+func (b XXHASHBucketizer) BucketFloat64(value float64) (int, error) {
 
 	return 0, nil
 }
 
-func (b xxhashBucketizer) BucketFloat32(value float32) (int, error) {
+func (b XXHASHBucketizer) BucketFloat32(value float32) (int, error) {
 
 	return 0, nil
 }
 
-func (b xxhashBucketizer) BucketInterface(value interface{}) (int, error) {
+func (b XXHASHBucketizer) BucketInterface(value interface{}) (int, error) {
 
 	return 0, nil
 }
 
-func NewXXHASHBucketizer(buckets ...bucketizer.Bucket) xxhashBucketizer {
+func NewXXHASHBucketizer(buckets ...bucketizer.Bucket) XXHASHBucketizer {
 	var sumOfWeights uint64 = 0
 	var bucketRanges []uint64
 	bucketRanges = append(bucketRanges, 0)
@@ -85,7 +85,7 @@ func NewXXHASHBucketizer(buckets ...bucketizer.Bucket) xxhashBucketizer {
 		startFromIndex := bucketRanges[i]
 		bucketRanges = append(bucketRanges, startFromIndex+uint64(bucket.Weight))
 	}
-	return xxhashBucketizer{
+	return XXHASHBucketizer{
 		Buckets:      buckets,
 		weightSum:    sumOfWeights,
 		bucketRanges: bucketRanges,
