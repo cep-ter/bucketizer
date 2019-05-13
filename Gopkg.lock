@@ -10,6 +10,14 @@
   version = "v2.0.0"
 
 [[projects]]
+  branch = "master"
+  digest = "1:a0a447589e3a5fafd05215b7aa06145fd4ae4ae02eb7081bbe5a4b3e45fd3b14"
+  name = "github.com/ehsangolshani/bucketizer"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "ba2ed728f1465e2d9d868e94a712b5f43b1e8b66"
+
+[[projects]]
   digest = "1:cf31692c14422fa27c83a05292eb5cbe0fb2775972e8f1f8446a71549bd8980b"
   name = "github.com/pkg/errors"
   packages = ["."]
@@ -22,6 +30,7 @@
   analyzer-version = 1
   input-imports = [
     "github.com/cespare/xxhash",
+    "github.com/ehsangolshani/bucketizer",
     "github.com/pkg/errors",
   ]
   solver-name = "gps-cdcl"

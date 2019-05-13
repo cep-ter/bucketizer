@@ -1,8 +1,8 @@
 package xxhash
 
 import (
-	"bucketizer"
 	"github.com/cespare/xxhash"
+	"github.com/ehsangolshani/bucketizer"
 	"github.com/pkg/errors"
 )
 
