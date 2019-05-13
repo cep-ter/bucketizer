@@ -17,7 +17,7 @@ func (b XXHASHBucketizer) BucketString(value string) (int, error) {
 	reminder := hashDigest % b.weightSum
 	n := len(b.bucketRanges)
 	for i := 0; i < n-1; i++ {
-		if reminder >= b.bucketRanges[i] && reminder >= b.bucketRanges[i+1] {
+		if reminder >= b.bucketRanges[i] && reminder < b.bucketRanges[i+1] {
 			return i, nil
 		}
 	}
@@ -54,34 +54,29 @@ func (b XXHASHBucketizer) BucketInt16(value int16) (int, error) {
 func (b XXHASHBucketizer) BucketInt32(value int32) (int, error) {
 
 	return 0, nil
-
 }
 
 func (b XXHASHBucketizer) BucketInt64(value int64) (int, error) {
 
 	return 0, nil
-
 }
 
 func (b XXHASHBucketizer) BucketFloat64(value float64) (int, error) {
 
 	return 0, nil
-
 }
 
 func (b XXHASHBucketizer) BucketFloat32(value float32) (int, error) {
 
 	return 0, nil
-
 }
 
 func (b XXHASHBucketizer) BucketInterface(value interface{}) (int, error) {
 
 	return 0, nil
-
 }
 
-func NewXXHASHBucketizer(buckets []bucketizer.Bucket) *XXHASHBucketizer {
+func NewXXHASHBucketizer(buckets ...bucketizer.Bucket) *XXHASHBucketizer {
 	var sumOfWeights uint64 = 0
 	var bucketRanges []uint64
 	bucketRanges = append(bucketRanges, 0)
