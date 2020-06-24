@@ -67,7 +67,7 @@ func (b XXHASHBucketizer) BucketFloat32(value float32) (int, error) {
 	return b.BucketBytes(valueInBytes)
 }
 
-func NewXXHASHBucketizer(seed int64, buckets ...bucketizer.Bucket) XXHASHBucketizer {
+func NewXXHASHBucketizer(seed string, buckets ...bucketizer.Bucket) XXHASHBucketizer {
 	var sumOfWeights uint64 = 0
 	var bucketRanges []uint64
 	bucketRanges = append(bucketRanges, 0)
@@ -80,6 +80,6 @@ func NewXXHASHBucketizer(seed int64, buckets ...bucketizer.Bucket) XXHASHBucketi
 		Buckets:      buckets,
 		weightSum:    sumOfWeights,
 		bucketRanges: bucketRanges,
-		seed:         []byte(fmt.Sprintf("%d", seed)),
+		seed:         []byte(seed),
 	}
 }
