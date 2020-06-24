@@ -15,11 +15,12 @@ type XXHASHBucketizer struct {
 }
 
 func (b XXHASHBucketizer) BucketBytes(value []byte) (int, error) {
-	hashDigest := xxhash.Sum64(append(value, b.seed...))
+	a := append(value, b.seed...)
+	hashDigest := xxhash.Sum64(a)
 	reminder := hashDigest % b.weightSum
 	n := len(b.bucketRanges)
 	for i := 0; i < n-1; i++ {
-		if reminder >= b.bucketRanges[i] && reminder >= b.bucketRanges[i+1] {
+		if reminder >= b.bucketRanges[i] && reminder < b.bucketRanges[i+1] {
 			return i, nil
 		}
 	}
