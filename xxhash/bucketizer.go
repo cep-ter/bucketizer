@@ -2,7 +2,7 @@ package xxhash
 
 import (
 	"fmt"
-	"github.com/cespare/xxhash"
+	"github.com/cespare/xxhash/v2"
 	"github.com/ehsangolshani/bucketizer"
 	"github.com/pkg/errors"
 )
